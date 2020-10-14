@@ -1,0 +1,13 @@
+stages:
+  - name: Publish flask image
+    steps:
+    - publishImageConfig:
+        dockerfilePath: ./Dockerfile
+        buildContext: .
+        tag: python-flask:${CICD_EXECUTION_SEQUENCE}
+  - name: deploy flask-${CICD_GIT_BRANCH} environment
+    steps:
+    - applyYamlConfig:
+        path: ./k8s-yaml/flask-deployment.yaml
+    - applyYamlConfig:
+        path: ./k8s-yaml/flask-service.yaml
