@@ -11,5 +11,5 @@ spec:
   ports:
     - name: webport
       protocol: TCP
-      port: 8080
+      port: 5000
 
